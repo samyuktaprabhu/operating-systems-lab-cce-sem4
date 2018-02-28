@@ -5,7 +5,6 @@ int main(int argc,char* argv[])
 {   
     int status;
     int i,j;
-    //char* arr[argc];
     char str[20][20];
     char temp[20];
     printf("\nNumber Of Arguments Passed: %d",argc);
