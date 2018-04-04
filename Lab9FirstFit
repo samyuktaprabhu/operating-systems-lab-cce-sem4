@@ -12,19 +12,6 @@ void get_holes_config(int hole[], int hole_filled[])
 	}
 }
 
-void sort(int hole[])
-{
-	int temp;
-	for(int i=0;i<nh;i++)
-		for(int j=0;j<nh-i;j++)
-			if(hole[j]>hole[j+1])
-			{
-				temp=hole[j];
-				hole[j]=hole[j+1];
-				hole[j+1]=temp;
-			}
-}
-
 void get_processes_and_details(int proc_mem_req[], int proc_allctd[])
 {
 	printf("\nEnter memory requirement for each process: \n");
@@ -75,14 +62,10 @@ int main()
 	scanf("%d", &nh);
 	int hole[nh], hole_filled[nh];
 	get_holes_config(hole, hole_filled);
-	
-	sort(hole);
-
 	printf("\nEnter no. of processes: ");
 	scanf("%d", &np);
 	int proc_mem_req[np], proc_allctd[np];
 	get_processes_and_details(proc_mem_req, proc_allctd);
-
 	allot(hole, hole_filled, proc_mem_req, proc_allctd);
 	display_info(hole, hole_filled, proc_mem_req, proc_allctd);
 
