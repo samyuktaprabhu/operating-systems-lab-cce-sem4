@@ -1,0 +1,27 @@
+Q2.
+(i)  grep -w '..' hello2.txt
+(ii) grep -E '^[A-Z]' hello2.txt
+(iii)grep '[.]$' hello2.txt
+(iv) grep '[ ]' hello2.txt
+
+Q3. 
+(i)  grep -w 'ict' info.txt|wc -l
+(ii) sed -e 's/cct/IT/' hell.text>stud.text
+(iii) 
+
+a=$(grep -w '^[1]' hell.text | cut -d ":" -f 6)
+b=$(grep -w '^[1]' hell.text | cut -d ":" -f 7)
+c=$(grep -w '^[1]' hell.text | cut -d ":" -f 8)
+d=$(echo $a+$b+$c|bc)
+echo $d/3|bc
+
+(iv)head -1 hell.text|tr '[a-z]' '[A-Z]'
+
+Q4.
+find *MIT*
+find *MIT*|cut -d ":" -f 1|xargs sed -i 's/MIT/ManipalInstituteOfTechnology/g'
+
+Q5. ls|grep [0-9]|xargs wc 
+
+Q6. killall -SIGKILL wc
+
