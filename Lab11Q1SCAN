@@ -1,0 +1,79 @@
+#include<stdio.h>
+int main()
+{
+	int head, tail,temp,dl,i,j,sum=0,n,d[20];
+	printf("Enter the total number of processes: ");
+	scanf("%d",&n);
+	printf("\nEnter position-head: ");
+	scanf("%d",&head);
+	printf("\nEnter position-tail: ");
+	scanf("%d",&tail);
+	printf("\nEnter the process order: \n");
+	for(i=0;i<n;i++)
+		scanf("%d",&d[i]);
+
+	d[n]=head;
+	n=n+1;
+	for(i=0;i<n;i++)
+	{
+		for(j=i;j<n;j++)
+		{
+			if(d[i]>d[j])
+			{
+				temp=d[i];
+				d[i]=d[j];
+				d[j]=temp;
+			}
+		}
+	}
+
+	for(i=0;i<n;i++)
+	{
+		if(head==d[i])
+		{
+			dl=i;
+			break;
+		}
+	}
+
+	if(dl>tail/2)
+	{
+		for(i=dl;i<n;i++)
+		{
+			printf("%d -> ",d[i]);
+			if(i>dl+1)
+				sum+=(d[i] - d[i-1]);
+		}
+		printf("%d -> ", tail);
+		sum+=(tail-d[i-1]);
+		sum+=(tail-d[dl-1]);
+		for(i=dl-1;i>=0;i--)
+		{
+			printf("%d -> ",d[i]);
+			if(i<dl-1)
+				sum+=(d[i+1]-d[i]);
+		}
+	}
+
+	else
+	{
+		for(i=dl;i>=0;i--)
+		{
+			printf("%d -> ",d[i]);
+			if(i<dl)
+				sum+=(d[i+1]-d[i]);
+		}
+			sum+=d[i+1];
+			sum+=d[dl+1];
+		printf("0 -> ");
+		for(i=dl+1;i<n;i++)
+		{
+			printf("%d -> ",d[i]);
+			if(i>dl+1)
+				sum+=(d[i]-d[i-1]);
+		}
+	}
+	printf("end");
+	printf("\nTotal Movement :%d \n",sum);
+	return 0;
+}
